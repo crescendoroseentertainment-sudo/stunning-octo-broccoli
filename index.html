@@ -213,7 +213,7 @@
     background-size: 200% 200%; background-position: 0% 0%;
   }
   .brand-panel.is-visible::before {
-    animation: stripeDrift 1.8s cubic-bezier(.4,0,.2,1) both;
+    animation: stripeDrift 1.95s cubic-bezier(.4,0,.2,1) both;
   }
   @keyframes stripeDrift {
     0% { background-position: 0% 0%; }
@@ -226,7 +226,7 @@
     mix-blend-mode:overlay; opacity:0;
   }
   .brand-panel.is-visible::after {
-    animation: sparkleSweep 1.8s ease-out .05s both;
+    animation: sparkleSweep 1.95s ease-out .05s both;
   }
   @keyframes sparkleSweep {
     0% { background-position:-70% -70%; opacity:0; }
@@ -243,7 +243,7 @@
     font-family: var(--font-heading); font-weight:900; font-size:88px; line-height:.85;
     letter-spacing:-.04em; color: var(--yellow); text-shadow:0 0 0 rgba(255,216,95,0);
   }
-  .brand-panel.is-visible .brand-mark .cr { animation:crGlow 1.4s ease-out both; }
+  .brand-panel.is-visible .brand-mark .cr { animation:crGlow 1.5s ease-out both; }
   @keyframes crGlow {
     0% { text-shadow:0 0 0 rgba(255,216,95,0); }
     45% { text-shadow:0 0 46px rgba(255,216,95,.9), 0 0 90px rgba(255,216,95,.45); }
@@ -251,7 +251,7 @@
   }
   .brand-mark .cr-c, .brand-mark .cr-r {
     display:inline-block; opacity:0;
-    transition:opacity .7s ease, transform .8s cubic-bezier(.22,1,.36,1);
+    transition:opacity .75s ease, transform .85s cubic-bezier(.22,1,.36,1);
   }
   .brand-mark .cr-c { transform:translateX(-140px); }
   .brand-mark .cr-r { transform:translateX(140px); }
@@ -259,14 +259,14 @@
   .brand-panel.is-visible .brand-mark .cr-r { opacity:1; transform:none; }
   .brand-mark .underline {
     width:64px; height:4px; background:var(--brown); margin:16px auto;
-    transform:scaleX(0); transition:transform .6s cubic-bezier(.34,1.56,.64,1) .8s;
+    transform:scaleX(0); transition:transform .65s cubic-bezier(.34,1.56,.64,1) .85s;
   }
   .brand-panel.is-visible .underline { transform:scaleX(1); }
   .brand-mark .full {
     margin-top:10px; font-family:var(--mono); font-size:11px; letter-spacing:.28em;
     color: var(--green); text-transform:uppercase;
     opacity:0; transform:translateY(40px);
-    transition:opacity .7s ease, transform .8s cubic-bezier(.22,1,.36,1);
+    transition:opacity .75s ease, transform .85s cubic-bezier(.22,1,.36,1);
   }
   .brand-panel.is-visible .brand-mark .full { opacity:1; transform:none; }
   @media (prefers-reduced-motion: reduce) {
@@ -394,19 +394,7 @@
       <div class="fcarousel" id="founderCarousel" tabindex="0" aria-roledescription="carousel" aria-label="Rick Magnus Rose, in the field">
         <div class="fcarousel-track">
           <figure class="fslide is-active">
-            <img src="images/founder-01.jpg" alt="Rick Magnus Rose seated beneath the colonnade at Balboa Park, San Diego" loading="eager">
-          </figure>
-          <figure class="fslide">
-            <img src="images/founder-02.jpg" alt="Rick Magnus Rose standing before a row of cypress trees at dusk" loading="lazy">
-          </figure>
-          <figure class="fslide">
-            <img src="images/founder-03.jpg" alt="Rick Magnus Rose at a rooftop table at sunset, mountains in the distance" loading="lazy">
-          </figure>
-          <figure class="fslide">
-            <img src="images/founder-04.jpg" alt="Rick Magnus Rose seated among tropical foliage" loading="lazy">
-          </figure>
-          <figure class="fslide">
-            <img src="images/founder-05.jpg" alt="Rick Magnus Rose in a suit on a film set" loading="lazy">
+            <img src="images/founder-03.jpg" alt="Rick Magnus Rose at a rooftop table at sunset, mountains in the distance" loading="eager">
           </figure>
         </div>
         <div class="fcarousel-grain" aria-hidden="true"></div>
@@ -561,6 +549,11 @@
   var timer = null;
   var hovering = false;
   var delay = 3000;
+
+  if (total <= 1) {
+    var controlsEl = root.querySelector('.fcarousel-controls');
+    if (controlsEl) controlsEl.style.display = 'none';
+  }
 
   slides.forEach(function (slide, i) {
     var dot = document.createElement('button');
