@@ -186,11 +186,33 @@
     nav.top { justify-content: center; }
     .svc-list, .roster-grid, .dispatch-grid, .submit-grid { grid-template-columns: 1fr !important; }
     .submit-form { grid-template-columns: 1fr !important; }
+    .studio-hero { flex-direction: column; }
+    .brand-panel { min-height: 220px; }
   }
   @media (max-width: 560px) {
     .container { padding: 0 20px; }
     .section { padding: 84px 0; }
     .statement { padding: 96px 0; }
+  }
+
+  /* Studio hero — carousel + brand panel side by side */
+  .studio-hero { display:flex; gap:40px; align-items:stretch; }
+  .brand-panel {
+    flex:1; min-width:280px; position:relative; overflow:hidden;
+    background: var(--green-deep); display:flex; align-items:center; justify-content:center;
+  }
+  .brand-panel::before {
+    content:''; position:absolute; inset:0;
+    background-image: repeating-linear-gradient(135deg, rgba(255,216,95,0.05) 0 2px, transparent 2px 26px);
+  }
+  .brand-mark { position:relative; text-align:center; padding:20px; }
+  .brand-mark .cr {
+    font-family: var(--font-heading); font-weight:900; font-size:88px; line-height:.85;
+    letter-spacing:-.04em; color: var(--yellow);
+  }
+  .brand-mark .full {
+    margin-top:10px; font-family:var(--mono); font-size:11px; letter-spacing:.28em;
+    color: var(--green); text-transform:uppercase;
   }
 
   /* Founder carousel */
@@ -312,40 +334,48 @@
 
 <section id="studio" class="studio-band">
   <div class="container">
-    <div class="fcarousel" id="founderCarousel" tabindex="0" aria-roledescription="carousel" aria-label="Rick Magnus Rose, in the field">
-      <div class="fcarousel-track">
-        <figure class="fslide is-active">
-          <img src="images/founder-01.jpg" alt="Rick Magnus Rose seated beneath the colonnade at Balboa Park, San Diego" loading="eager">
-        </figure>
-        <figure class="fslide">
-          <img src="images/founder-02.jpg" alt="Rick Magnus Rose standing before a row of cypress trees at dusk" loading="lazy">
-        </figure>
-        <figure class="fslide">
-          <img src="images/founder-03.jpg" alt="Rick Magnus Rose at a rooftop table at sunset, mountains in the distance" loading="lazy">
-        </figure>
-        <figure class="fslide">
-          <img src="images/founder-04.jpg" alt="Rick Magnus Rose seated among tropical foliage" loading="lazy">
-        </figure>
-        <figure class="fslide">
-          <img src="images/founder-05.jpg" alt="Rick Magnus Rose in a suit on a film set" loading="lazy">
-        </figure>
+    <div class="studio-hero">
+      <div class="fcarousel" id="founderCarousel" tabindex="0" aria-roledescription="carousel" aria-label="Rick Magnus Rose, in the field">
+        <div class="fcarousel-track">
+          <figure class="fslide is-active">
+            <img src="images/founder-01.jpg" alt="Rick Magnus Rose seated beneath the colonnade at Balboa Park, San Diego" loading="eager">
+          </figure>
+          <figure class="fslide">
+            <img src="images/founder-02.jpg" alt="Rick Magnus Rose standing before a row of cypress trees at dusk" loading="lazy">
+          </figure>
+          <figure class="fslide">
+            <img src="images/founder-03.jpg" alt="Rick Magnus Rose at a rooftop table at sunset, mountains in the distance" loading="lazy">
+          </figure>
+          <figure class="fslide">
+            <img src="images/founder-04.jpg" alt="Rick Magnus Rose seated among tropical foliage" loading="lazy">
+          </figure>
+          <figure class="fslide">
+            <img src="images/founder-05.jpg" alt="Rick Magnus Rose in a suit on a film set" loading="lazy">
+          </figure>
+        </div>
+        <div class="fcarousel-grain" aria-hidden="true"></div>
+        <div class="fcarousel-scrim" aria-hidden="true"></div>
+
+        <div class="fcarousel-caption">
+          <span class="tag" style="font-family:var(--mono); font-size:11px; background:var(--green-deep); color:var(--yellow); padding:4px 8px">RICK MAGNUS ROSE — FOUNDER</span>
+        </div>
+
+        <span class="fcarousel-count mono" id="founderCount" aria-hidden="true">01 / 05</span>
+
+        <div class="fcarousel-controls">
+          <button type="button" class="fcarousel-btn" id="founderPrev" aria-label="Previous photo">‹</button>
+          <div class="fcarousel-dots" id="founderDots" role="tablist" aria-label="Choose photo"></div>
+          <button type="button" class="fcarousel-btn" id="founderNext" aria-label="Next photo">›</button>
+        </div>
+
+        <span class="sr-only" role="status" aria-live="polite" id="founderLive"></span>
       </div>
-      <div class="fcarousel-grain" aria-hidden="true"></div>
-      <div class="fcarousel-scrim" aria-hidden="true"></div>
-
-      <div class="fcarousel-caption">
-        <span class="tag" style="font-family:var(--mono); font-size:11px; background:var(--green-deep); color:var(--yellow); padding:4px 8px">RICK MAGNUS ROSE — FOUNDER</span>
+      <div class="brand-panel" aria-hidden="true">
+        <div class="brand-mark">
+          <div class="cr">CR</div>
+          <div class="full">Crescendo Rose<br>Entertainment</div>
+        </div>
       </div>
-
-      <span class="fcarousel-count mono" id="founderCount" aria-hidden="true">01 / 05</span>
-
-      <div class="fcarousel-controls">
-        <button type="button" class="fcarousel-btn" id="founderPrev" aria-label="Previous photo">‹</button>
-        <div class="fcarousel-dots" id="founderDots" role="tablist" aria-label="Choose photo"></div>
-        <button type="button" class="fcarousel-btn" id="founderNext" aria-label="Next photo">›</button>
-      </div>
-
-      <span class="sr-only" role="status" aria-live="polite" id="founderLive"></span>
     </div>
   </div>
   <div class="container studio-copy">
