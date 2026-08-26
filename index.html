@@ -210,18 +210,24 @@
   .brand-mark .cr {
     font-family: var(--font-heading); font-weight:900; font-size:88px; line-height:.85;
     letter-spacing:-.04em; color: var(--yellow);
+    opacity:0; transform:translateY(14px) scale(.94);
+    transition:opacity .7s ease, transform .7s cubic-bezier(.4,0,.2,1);
   }
+  .brand-panel.is-visible .brand-mark .cr { opacity:1; transform:none; }
   .brand-mark .underline {
     width:64px; height:4px; background:var(--brown); margin:16px auto;
-    transform:scaleX(0); transition:transform .7s cubic-bezier(.4,0,.2,1) .3s;
+    transform:scaleX(0); transition:transform .7s cubic-bezier(.4,0,.2,1) .45s;
   }
   .brand-panel.is-visible .underline { transform:scaleX(1); }
-  @media (prefers-reduced-motion: reduce) {
-    .brand-mark .underline { transform:none; transition:none; }
-  }
   .brand-mark .full {
     margin-top:10px; font-family:var(--mono); font-size:11px; letter-spacing:.28em;
     color: var(--green); text-transform:uppercase;
+    opacity:0; transform:translateY(10px);
+    transition:opacity .7s ease .18s, transform .7s cubic-bezier(.4,0,.2,1) .18s;
+  }
+  .brand-panel.is-visible .brand-mark .full { opacity:1; transform:none; }
+  @media (prefers-reduced-motion: reduce) {
+    .brand-mark .cr, .brand-mark .full, .brand-mark .underline { opacity:1; transform:none; transition:none; }
   }
 
   /* Founder carousel */
