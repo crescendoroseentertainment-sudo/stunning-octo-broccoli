@@ -209,11 +209,19 @@
   .brand-mark { position:relative; text-align:center; padding:20px; }
   .brand-mark .cr {
     font-family: var(--font-heading); font-weight:900; font-size:88px; line-height:.85;
-    letter-spacing:-.04em; color: var(--yellow);
+    letter-spacing:-.04em; color: var(--yellow); text-shadow:0 0 0 rgba(255,216,95,0);
     opacity:0; transform:translateY(30px) scale(.8);
     transition:opacity .6s ease, transform .8s cubic-bezier(.34,1.56,.64,1);
   }
-  .brand-panel.is-visible .brand-mark .cr { opacity:1; transform:none; }
+  .brand-panel.is-visible .brand-mark .cr {
+    opacity:1; transform:none;
+    animation:crGlow 1.4s ease-out both;
+  }
+  @keyframes crGlow {
+    0% { text-shadow:0 0 0 rgba(255,216,95,0); }
+    45% { text-shadow:0 0 46px rgba(255,216,95,.9), 0 0 90px rgba(255,216,95,.45); }
+    100% { text-shadow:0 0 16px rgba(255,216,95,.35); }
+  }
   .brand-mark .underline {
     width:64px; height:4px; background:var(--brown); margin:16px auto;
     transform:scaleX(0); transition:transform .6s cubic-bezier(.34,1.56,.64,1) .45s;
@@ -227,7 +235,8 @@
   }
   .brand-panel.is-visible .brand-mark .full { opacity:1; transform:none; }
   @media (prefers-reduced-motion: reduce) {
-    .brand-mark .cr, .brand-mark .full, .brand-mark .underline { opacity:1; transform:none; transition:none; }
+    .brand-mark .cr, .brand-mark .full, .brand-mark .underline { opacity:1; transform:none; transition:none; animation:none; }
+    .brand-mark .cr { text-shadow:0 0 16px rgba(255,216,95,.35); }
   }
 
   /* Founder carousel */
