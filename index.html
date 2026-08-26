@@ -203,8 +203,39 @@
     background: var(--green-deep); display:flex; align-items:center; justify-content:center;
   }
   .brand-panel::before {
-    content:''; position:absolute; inset:0;
-    background-image: repeating-linear-gradient(135deg, rgba(255,216,95,0.05) 0 2px, transparent 2px 26px);
+    content:''; position:absolute; inset:-15%;
+    background-image: repeating-linear-gradient(135deg,
+      rgba(255,216,95,.12) 0 2px,
+      rgba(255,216,95,.02) 2px 13px,
+      rgba(0,0,0,.15) 13px 15px,
+      rgba(255,216,95,.02) 15px 26px);
+    background-size: 200% 200%; background-position: 0% 0%;
+  }
+  .brand-panel.is-visible::before {
+    animation: stripeDrift 1.8s cubic-bezier(.4,0,.2,1) both;
+  }
+  @keyframes stripeDrift {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 14% 14%; }
+  }
+  .brand-panel::after {
+    content:''; position:absolute; inset:0; pointer-events:none; z-index:2;
+    background:linear-gradient(115deg, transparent 42%, rgba(255,255,255,.65) 50%, transparent 58%);
+    background-size:260% 260%; background-position:-40% -40%;
+    mix-blend-mode:overlay; opacity:0;
+  }
+  .brand-panel.is-visible::after {
+    animation: sparkleSweep 1.8s ease-out .05s both;
+  }
+  @keyframes sparkleSweep {
+    0% { background-position:-70% -70%; opacity:0; }
+    18% { opacity:.9; }
+    55% { opacity:.4; }
+    100% { background-position:70% 70%; opacity:0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .brand-panel.is-visible::before, .brand-panel.is-visible::after { animation:none; }
+    .brand-panel::after { opacity:0; }
   }
   .brand-mark { position:relative; text-align:center; padding:20px; }
   .brand-mark .cr {
