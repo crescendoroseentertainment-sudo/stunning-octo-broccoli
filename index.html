@@ -211,7 +211,14 @@
     font-family: var(--font-heading); font-weight:900; font-size:88px; line-height:.85;
     letter-spacing:-.04em; color: var(--yellow);
   }
-  .brand-mark .underline { width:64px; height:4px; background:var(--brown); margin:16px auto; }
+  .brand-mark .underline {
+    width:64px; height:4px; background:var(--brown); margin:16px auto;
+    transform:scaleX(0); transition:transform .7s cubic-bezier(.4,0,.2,1) .3s;
+  }
+  .brand-panel.is-visible .underline { transform:scaleX(1); }
+  @media (prefers-reduced-motion: reduce) {
+    .brand-mark .underline { transform:none; transition:none; }
+  }
   .brand-mark .full {
     margin-top:10px; font-family:var(--mono); font-size:11px; letter-spacing:.28em;
     color: var(--green); text-transform:uppercase;
@@ -365,7 +372,7 @@
 
         <span class="sr-only" role="status" aria-live="polite" id="founderLive"></span>
       </div>
-      <div class="brand-panel" aria-hidden="true">
+      <div class="brand-panel reveal" aria-hidden="true">
         <div class="brand-mark">
           <div class="cr">CR</div>
           <div class="full">Crescendo Rose<br>Entertainment</div>
