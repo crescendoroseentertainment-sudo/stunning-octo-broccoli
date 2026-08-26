@@ -210,33 +210,38 @@
   .brand-mark .cr {
     font-family: var(--font-heading); font-weight:900; font-size:88px; line-height:.85;
     letter-spacing:-.04em; color: var(--yellow); text-shadow:0 0 0 rgba(255,216,95,0);
-    opacity:0; transform:translateY(30px) scale(.8);
-    transition:opacity .6s ease, transform .8s cubic-bezier(.34,1.56,.64,1);
   }
-  .brand-panel.is-visible .brand-mark .cr {
-    opacity:1; transform:none;
-    animation:crGlow 1.4s ease-out both;
-  }
+  .brand-panel.is-visible .brand-mark .cr { animation:crGlow 1.4s ease-out both; }
   @keyframes crGlow {
     0% { text-shadow:0 0 0 rgba(255,216,95,0); }
     45% { text-shadow:0 0 46px rgba(255,216,95,.9), 0 0 90px rgba(255,216,95,.45); }
     100% { text-shadow:0 0 16px rgba(255,216,95,.35); }
   }
+  .brand-mark .cr-c, .brand-mark .cr-r {
+    display:inline-block; opacity:0;
+    transition:opacity .7s ease, transform .8s cubic-bezier(.22,1,.36,1);
+  }
+  .brand-mark .cr-c { transform:translateX(-140px); }
+  .brand-mark .cr-r { transform:translateX(140px); }
+  .brand-panel.is-visible .brand-mark .cr-c,
+  .brand-panel.is-visible .brand-mark .cr-r { opacity:1; transform:none; }
   .brand-mark .underline {
     width:64px; height:4px; background:var(--brown); margin:16px auto;
-    transform:scaleX(0); transition:transform .6s cubic-bezier(.34,1.56,.64,1) .45s;
+    transform:scaleX(0); transition:transform .6s cubic-bezier(.34,1.56,.64,1) .8s;
   }
   .brand-panel.is-visible .underline { transform:scaleX(1); }
   .brand-mark .full {
     margin-top:10px; font-family:var(--mono); font-size:11px; letter-spacing:.28em;
     color: var(--green); text-transform:uppercase;
-    opacity:0; transform:translateY(18px);
-    transition:opacity .6s ease .22s, transform .7s cubic-bezier(.34,1.56,.64,1) .22s;
+    opacity:0; transform:translateY(40px);
+    transition:opacity .7s ease, transform .8s cubic-bezier(.22,1,.36,1);
   }
   .brand-panel.is-visible .brand-mark .full { opacity:1; transform:none; }
   @media (prefers-reduced-motion: reduce) {
-    .brand-mark .cr, .brand-mark .full, .brand-mark .underline { opacity:1; transform:none; transition:none; animation:none; }
-    .brand-mark .cr { text-shadow:0 0 16px rgba(255,216,95,.35); }
+    .brand-mark .cr-c, .brand-mark .cr-r, .brand-mark .full, .brand-mark .underline {
+      opacity:1; transform:none; transition:none; animation:none;
+    }
+    .brand-mark .cr { animation:none; text-shadow:0 0 16px rgba(255,216,95,.35); }
   }
 
   /* Founder carousel */
@@ -389,7 +394,7 @@
       </div>
       <div class="brand-panel reveal" aria-hidden="true">
         <div class="brand-mark">
-          <div class="cr">CR</div>
+          <div class="cr"><span class="cr-c">C</span><span class="cr-r">R</span></div>
           <div class="full">Crescendo Rose<br>Entertainment</div>
           <div class="underline"></div>
         </div>
