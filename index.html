@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Crescendo Rose Entertainment | Artist Management — San Diego</title>
+<meta name="description" content="Crescendo Rose Entertainment is a San Diego management company for performers, musicians, and on-camera personalities. Now accepting submissions for our first six founding artists.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://crescendorose.com/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Crescendo Rose Entertainment">
+<meta property="og:description" content="A San Diego management company for performers, musicians, and on-camera personalities. Now accepting submissions.">
+<meta property="og:url" content="https://crescendorose.com/">
+<meta property="og:site_name" content="Crescendo Rose Entertainment">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Crescendo Rose Entertainment">
+<meta name="twitter:description" content="A San Diego management company for performers, musicians, and on-camera personalities.">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"Crescendo Rose Entertainment","url":"https://crescendorose.com","email":"hello@crescendorose.com","telephone":"(619) 854-5528","address":{"@type":"PostalAddress","addressLocality":"San Diego","addressRegion":"CA","addressCountry":"US"},"description":"A San Diego management company for performers, musicians, and on-camera personalities."}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800;900&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rev: .85s; --tick: 26s;
+    --navy:        #0C1524;
+    --navy-panel:  #111C2F;
+    --navy-raise:  #16233A;
+    --line:        #2A3A55;
+    --line-strong: #3C5175;
+    --green:       #7FA98A;
+    --green-dim:   #5D8168;
+    --green-deep:  #1B2A20;
+    --yellow:      #FFD85F;
+    --text:        #ECEFF2;
+    --text-dim:    #94A2B6;
+    --font-heading: 'Archivo', system-ui, sans-serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+    --mono: ui-monospace, 'SF Mono', Menlo, monospace;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--navy); color: var(--text);
+    font-family: var(--font-body); font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,h2,h3,h4,h5,h6 { font-family: var(--font-heading); font-weight: 800; }
+  a { color: var(--text); }
+  img { display: block; }
+
+  @keyframes revUp { from { opacity:0; transform:translateY(28px);} to {opacity:1;transform:none;} }
+  @keyframes revIn { from { opacity:0; transform:translateX(-24px);} to {opacity:1;transform:none;} }
+  @keyframes grow  { from { transform:scaleX(0);} to {transform:scaleX(1);} }
+  @media (prefers-reduced-motion: reduce){ *{animation:none !important;} }
+
+  .wrap { max-width: 1240px; margin: 0 auto; border-left: 2px solid var(--line); border-right: 2px solid var(--line); }
+
+  .btn {
+    font-family: var(--font-heading); font-weight: 700; font-size: 14px;
+    letter-spacing: .04em; text-decoration: none; display: inline-flex;
+    align-items: center; padding: 13px 20px; border: 2px solid var(--line-strong);
+    transition: background .25s ease, color .25s ease, border-color .25s ease;
+    cursor: pointer;
+  }
+  .btn-primary { background: var(--yellow); color: #10192B; border-color: var(--yellow); }
+  .btn-primary:hover { background: #FFE38A; border-color: #FFE38A; }
+  .btn-secondary { background: transparent; color: var(--text); }
+  .btn-secondary:hover { border-color: var(--green); color: var(--green); }
+
+  .mono { font-family: var(--mono); }
+  .hl { background: var(--yellow); color: #10192B; padding: 0 .14em; }
+
+  nav.top {
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 40px; border-bottom:2px solid var(--line);
+    flex-wrap: wrap; gap:16px;
+  }
+  .navlinks { display:flex; align-items:center; gap:26px; font-family:var(--font-heading);
+    font-weight:600; font-size:13px; letter-spacing:.06em; text-transform:uppercase; }
+  .navlinks a { text-decoration:none; color:var(--text-dim); transition:color .25s; }
+  .navlinks a:hover { color: var(--yellow); }
+
+  .hero { display:grid; grid-template-columns:7fr 5fr; border-bottom:2px solid var(--line); }
+  .hero h1 { font-size:clamp(38px,5.4vw,72px); font-weight:900; line-height:.98; letter-spacing:-.03em; margin:0; }
+  .vr { border-right: 2px solid var(--line); }
+
+  .brand-panel {
+    flex:1; min-height:320px; position:relative; overflow:hidden;
+    background: var(--green-deep);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .brand-panel::before {
+    content:''; position:absolute; inset:0;
+    background-image: repeating-linear-gradient(135deg, rgba(255,216,95,0.05) 0 2px, transparent 2px 26px);
+  }
+  .brand-mark {
+    position:relative; text-align:center; padding:20px;
+  }
+  .brand-mark .cr {
+    font-family: var(--font-heading); font-weight:900; font-size:88px; line-height:.85;
+    letter-spacing:-.04em; color: var(--yellow);
+  }
+  .brand-mark .full {
+    margin-top:10px; font-family:var(--mono); font-size:11px; letter-spacing:.28em;
+    color: var(--green); text-transform:uppercase;
+  }
+  .tag { font-family:var(--mono); font-size:11px; background:var(--green-deep); color:var(--yellow); padding:4px 8px; }
+
+  .stat { padding:20px; }
+  .stat b { font-family:var(--font-heading); font-weight:900; font-size:34px; line-height:1; display:block; color:var(--yellow); }
+  .stat span { font-family:var(--mono); font-size:11px; color:var(--text-dim); }
+
+  .ticker-wrap { overflow:hidden; border-bottom:2px solid var(--line); padding:12px 0; background:var(--navy-panel); }
+  .ticker { display:flex; width:max-content; animation:tick var(--tick) linear infinite; }
+  @keyframes tick { from { transform:translateX(0);} to {transform:translateX(-50%);} }
+  .ticker div { display:flex; gap:36px; padding-right:36px; font-family:var(--font-heading);
+    font-weight:800; font-size:15px; letter-spacing:.04em; text-transform:uppercase; white-space:nowrap; }
+  .ticker .d { color: var(--green); }
+
+  .svc { padding:28px 24px 32px; display:flex; flex-direction:column; gap:12px; transition:background .3s; }
+  .svc:hover { background: var(--navy-raise); }
+  .svc .n { font-family:var(--mono); font-size:11px; color:var(--green); }
+  .svc h4 { margin:0; font-size:21px; letter-spacing:-.01em; }
+  .svc p { margin:0; font-size:14px; line-height:1.55; color:var(--text-dim); }
+  .svc .bar { height:4px; background:var(--yellow); transform-origin:left; animation:grow var(--rev) both .2s; }
+
+  .news .thumb { height:170px; background:repeating-linear-gradient(135deg,#16233A 0 8px,#1D2C46 8px 16px); }
+  .news .meta { font-family:var(--mono); font-size:11px; color:var(--green); }
+  .news h4 { margin:0; font-size:19px; line-height:1.15; }
+  .news p { margin:0 0 24px; font-size:14px; color:var(--text-dim); line-height:1.55; }
+
+  label.f { font-family:var(--mono); font-size:11px; letter-spacing:.08em; color:var(--text-dim); }
+  .input {
+    background: var(--navy-panel); border:2px solid var(--line); color:var(--text);
+    padding:12px 14px; font-family:var(--font-body); font-size:14px; width:100%;
+    transition:border-color .25s;
+  }
+  .input:focus { outline:none; border-color: var(--yellow); }
+  .input::placeholder { color:#5C6B82; }
+
+  @media (max-width: 900px) {
+    .hero { grid-template-columns:1fr; }
+    .grid4 { grid-template-columns:1fr 1fr !important; }
+    .grid3 { grid-template-columns:1fr !important; }
+    .split { grid-template-columns:1fr !important; }
+    .navlinks { display:none; }
+    nav.top { justify-content:center; }
+  }
+  @media (max-width: 560px) {
+    .grid4 { grid-template-columns:1fr !important; }
+    .brand-mark .cr { font-size:64px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <nav class="top">
+    <div style="display:flex; align-items:baseline; gap:10px">
+      <span style="font-family:var(--font-heading); font-weight:900; font-size:19px; letter-spacing:-.02em">CRESCENDO ROSE ENTERTAINMENT</span>
+    </div>
+    <div class="navlinks">
+      <a href="#roster">Roster</a>
+      <a href="#services">Services</a>
+      <a href="#studio">Studio</a>
+      <a href="#dispatch">Dispatch</a>
+      <a href="#submit" class="btn btn-primary">Submit your work</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div class="vr" style="padding:64px 40px 48px; display:flex; flex-direction:column; gap:28px">
+      <div class="mono" style="font-size:12px; letter-spacing:.14em; color:var(--text-dim); animation:revIn var(--rev) both">
+        <span class="hl" style="padding:3px 8px">NOW ACCEPTING SUBMISSIONS</span> · SAN DIEGO
+      </div>
+      <h1 style="animation:revUp var(--rev) both .06s">Crescendo Rose Entertainment.<br>First six<br><span class="hl">artists.</span></h1>
+      <p style="font-size:19px; line-height:1.5; max-width:46ch; margin:0; color:var(--text-dim); animation:revUp var(--rev) both .16s">
+        Crescendo Rose Entertainment is a new San Diego management company for performers, musicians, and on-camera personalities. We are taking on our first artists now — which means our whole attention, and terms written for people at the start.
+      </p>
+      <div style="display:flex; gap:12px; flex-wrap:wrap; animation:revUp var(--rev) both .24s">
+        <a href="#submit" class="btn btn-primary" style="font-size:15px; padding:14px 22px">Request representation</a>
+        <a href="#roster" class="btn btn-secondary" style="font-size:15px; padding:14px 22px">See the roster</a>
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:column">
+      <div class="brand-panel">
+        <div class="brand-mark">
+          <div class="cr">CR</div>
+          <div class="full">CRESCENDO ROSE ENTERTAINMENT</div>
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; border-top:2px solid var(--line)">
+        <div class="stat vr"><b>6</b><span>FOUNDING ROSTER SPOTS</span></div>
+        <div class="stat"><b>2026</b><span>OPEN FOR SUBMISSIONS</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ticker-wrap">
+    <div class="ticker">
+      <div><span>Music</span><span class="d">◆</span><span>Theatre</span><span class="d">◆</span><span>Comedy</span><span class="d">◆</span><span>Voice</span><span class="d">◆</span><span>Dance</span><span class="d">◆</span><span>Hosting</span><span class="d">◆</span><span>Creators</span><span class="d">◆</span></div>
+      <div><span>Music</span><span class="d">◆</span><span>Theatre</span><span class="d">◆</span><span>Comedy</span><span class="d">◆</span><span>Voice</span><span class="d">◆</span><span>Dance</span><span class="d">◆</span><span>Hosting</span><span class="d">◆</span><span>Creators</span><span class="d">◆</span></div>
+    </div>
+  </div>
+
+  <div id="services" style="padding:56px 40px 20px; border-bottom:2px solid var(--line)">
+    <div style="display:flex; align-items:baseline; justify-content:space-between; margin-bottom:36px; flex-wrap:wrap; gap:12px">
+      <h2 style="font-size:clamp(30px,4vw,44px); letter-spacing:-.03em; margin:0">What we actually do</h2>
+      <span class="mono" style="font-size:12px; color:var(--text-dim)">01 — 04</span>
+    </div>
+    <div class="grid4" style="display:grid; grid-template-columns:repeat(4,1fr); border-top:2px solid var(--line)">
+      <div class="svc vr">
+        <div class="n">01</div>
+        <h4>Management</h4>
+        <p>Day-to-day representation. Calendars, negotiations, and the unglamorous follow-through that keeps a career moving.</p>
+        <div class="bar"></div>
+      </div>
+      <div class="svc vr">
+        <div class="n">02</div>
+        <h4>Booking</h4>
+        <p>Rooms, stages, sessions, and dates. We pitch, we negotiate, and we put the terms in writing before anyone shows up.</p>
+        <div class="bar"></div>
+      </div>
+      <div class="svc vr">
+        <div class="n">03</div>
+        <h4>Development</h4>
+        <p>Visual identity, creative direction, and media training. We build the artist, not just the next release.</p>
+        <div class="bar"></div>
+      </div>
+      <div class="svc">
+        <div class="n">04</div>
+        <h4>Partnerships</h4>
+        <p>Brands, sync, and collaborations — pursued only when they fit the work rather than interrupt it.</p>
+        <div class="bar"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="studio" class="split" style="display:grid; grid-template-columns:5fr 7fr; border-bottom:2px solid var(--line)">
+    <div class="vr" style="min-height:420px; position:relative; overflow:hidden">
+      <img src="founder.jpg" alt="Rick Magnus Rose, founder of Crescendo Rose Entertainment" style="width:100%; height:100%; object-fit:cover; object-position:60% 55%">
+      <span class="tag" style="position:absolute; left:16px; bottom:16px">RICK MAGNUS ROSE — FOUNDER</span>
+    </div>
+    <div style="padding:56px 40px; display:flex; flex-direction:column; gap:20px">
+      <h6 style="margin:0; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--green)">The studio</h6>
+      <h2 style="font-size:clamp(28px,3.6vw,40px); letter-spacing:-.03em; margin:0; max-width:24ch">A new company, built the way we wish ours had been.</h2>
+      <p style="margin:0; font-size:17px; line-height:1.6; max-width:56ch; color:var(--text-dim)">
+        Crescendo Rose Entertainment opened in 2026 out of a rented room in the Gaslamp Quarter. We have spent years working other people's rooms, tours and green rooms, and we are building this one on the parts that worked: a small roster, obsessive follow-through, and terms short enough to read in one sitting.
+      </p>
+      <div class="grid3" style="display:grid; grid-template-columns:1fr 1fr 1fr; border-top:2px solid var(--line); margin-top:8px">
+        <div style="padding:20px 20px 0 0; border-right:2px solid var(--line)">
+          <div style="font-family:var(--font-heading); font-weight:800; font-size:15px">Small roster</div>
+          <p style="font-size:13px; color:var(--text-dim); margin:6px 0 20px">Six founding artists, then we close intake.</p>
+        </div>
+        <div style="padding:20px 20px 0">
+          <div style="font-family:var(--font-heading); font-weight:800; font-size:15px">Plain terms</div>
+          <p style="font-size:13px; color:var(--text-dim); margin:6px 0 20px">Short contracts, no hidden splits, rates in writing.</p>
+        </div>
+        <div style="padding:20px 0 0 20px; border-left:2px solid var(--line)">
+          <div style="font-family:var(--font-heading); font-weight:800; font-size:15px">In the room</div>
+          <p style="font-size:13px; color:var(--text-dim); margin:6px 0 20px">A founder is at every first date. No exceptions.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="roster" style="padding:56px 40px; border-bottom:2px solid var(--line)">
+    <div style="display:flex; align-items:baseline; justify-content:space-between; margin-bottom:32px; flex-wrap:wrap; gap:12px">
+      <h2 style="font-size:clamp(30px,4vw,44px); letter-spacing:-.03em; margin:0">Roster</h2>
+      <span class="mono" style="font-size:12px; color:var(--text-dim)">1 OF 6 FILLED</span>
+    </div>
+    <div class="grid3" style="display:grid; grid-template-columns:repeat(3,1fr); border-top:2px solid var(--line)">
+      <div class="vr" style="padding:28px 24px 32px; display:flex; flex-direction:column; gap:10px">
+        <div class="mono" style="font-size:11px; color:var(--green)">RMR — 001</div>
+        <h4 style="margin:0; font-size:22px">Rick Magnus Rose</h4>
+        <p style="margin:0; font-size:14px; color:var(--text-dim); line-height:1.55">Alt jazz and progressive R&amp;B. Founding artist.</p>
+      </div>
+      <div class="vr" style="padding:28px 24px 32px; display:flex; flex-direction:column; gap:10px; opacity:.45">
+        <div class="mono" style="font-size:11px; color:var(--text-dim)">···</div>
+        <h4 style="margin:0; font-size:22px; font-style:italic">Open</h4>
+        <p style="margin:0; font-size:14px; color:var(--text-dim); line-height:1.55">Accepting submissions.</p>
+      </div>
+      <div style="padding:28px 24px 32px; display:flex; flex-direction:column; gap:10px; opacity:.45">
+        <div class="mono" style="font-size:11px; color:var(--text-dim)">···</div>
+        <h4 style="margin:0; font-size:22px; font-style:italic">Open</h4>
+        <p style="margin:0; font-size:14px; color:var(--text-dim); line-height:1.55">Accepting submissions.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="dispatch" class="news" style="padding:56px 40px; border-bottom:2px solid var(--line)">
+    <div style="display:flex; align-items:baseline; justify-content:space-between; margin-bottom:32px; flex-wrap:wrap; gap:12px">
+      <h2 style="font-size:clamp(30px,4vw,44px); letter-spacing:-.03em; margin:0">Dispatch</h2>
+      <span class="mono" style="font-size:12px; color:var(--text-dim)">RECENT</span>
+    </div>
+    <div class="grid3" style="display:grid; grid-template-columns:repeat(3,1fr); border-top:2px solid var(--line)">
+      <div class="vr" style="padding:24px 24px 0 0; display:flex; flex-direction:column; gap:14px">
+        <div class="thumb"></div>
+        <div class="meta">AUG 2026 · COMPANY</div>
+        <h4>Crescendo Rose Entertainment opens for submissions</h4>
+        <p>Six founding roster spots. A founder reads every submission personally.</p>
+      </div>
+      <div class="vr" style="padding:24px 24px 0 0; display:flex; flex-direction:column; gap:14px">
+        <div class="thumb"></div>
+        <div class="meta">AUG 2026 · STUDIO</div>
+        <h4>The room in the Gaslamp</h4>
+        <p>Where the company started, and why the roster stays small on purpose.</p>
+      </div>
+      <div style="padding:24px 24px 0 0; display:flex; flex-direction:column; gap:14px">
+        <div class="thumb"></div>
+        <div class="meta">2026 · ARTIST</div>
+        <h4>Rick Magnus Rose — first release in motion</h4>
+        <p>Alt jazz and progressive R&amp;B. First single in production now.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="submit" class="split" style="display:grid; grid-template-columns:5fr 7fr">
+    <div class="vr" style="padding:56px 40px">
+      <h2 style="font-size:clamp(28px,3.6vw,40px); letter-spacing:-.03em; margin:0 0 16px">Send us the tape.</h2>
+      <p style="font-size:16px; line-height:1.6; max-width:34ch; margin:0 0 20px; color:var(--text-dim)">
+        One link is enough — a live clip, a demo, a reel, a set. A founder reads every submission and replies within 48 hours.
+      </p>
+      <div class="mono" style="font-size:12px; line-height:2; color:var(--text-dim)">
+        <div><a href="mailto:hello@crescendorose.com" style="color:var(--yellow); text-decoration:none">hello@crescendorose.com</a></div>
+        <div>(619) 854-5528</div>
+        <div>San Diego, California</div>
+      </div>
+    </div>
+    <div style="padding:56px 40px; display:grid; grid-template-columns:1fr 1fr; gap:20px">
+      <div style="display:flex; flex-direction:column; gap:6px"><label class="f">NAME</label><input class="input" placeholder="Vivian Marsh"></div>
+      <div style="display:flex; flex-direction:column; gap:6px"><label class="f">EMAIL</label><input class="input" type="email" placeholder="you@domain.com"></div>
+      <div style="display:flex; flex-direction:column; gap:6px"><label class="f">DISCIPLINE</label><input class="input" placeholder="Vocalist / host"></div>
+      <div style="display:flex; flex-direction:column; gap:6px"><label class="f">LINK TO WORK</label><input class="input" placeholder="https://"></div>
+      <div style="grid-column:1/-1; display:flex; flex-direction:column; gap:6px"><label class="f">WHAT ARE YOU BUILDING?</label><textarea class="input" rows="4" placeholder="Two lines is plenty."></textarea></div>
+      <a href="mailto:hello@crescendorose.com?subject=Submission%20for%20review" class="btn btn-primary" style="grid-column:1/-1; justify-content:flex-start; padding:16px 22px; font-size:15px">Submit for review</a>
+    </div>
+  </div>
+
+  <div style="border-top:2px solid var(--line); padding:20px 40px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px" class="mono">
+    <span style="font-size:11px; color:var(--text-dim)">© 2026 CRESCENDO ROSE ENTERTAINMENT LLC</span>
+    <span style="font-size:11px; color:var(--text-dim)">MANAGEMENT · BOOKING · PARTNERSHIPS</span>
+  </div>
+
+</div>
+
+</body>
+</html>
