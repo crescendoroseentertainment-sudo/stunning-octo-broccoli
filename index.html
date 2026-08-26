@@ -137,8 +137,8 @@
   .svc:hover h4 { color: var(--yellow); }
   .svc p { margin: 0; font-size: 15px; line-height: 1.6; color: var(--text-dim); max-width: 42ch; }
 
-  /* Studio — full-bleed carousel band */
-  .studio-band { padding: 0; border-bottom: 1px solid var(--line); }
+  /* Studio */
+  .studio-band { padding: 120px 0 0; border-bottom: 1px solid var(--line); }
   .studio-copy { padding: 64px 0 120px; }
   .pillars { display: flex; flex-wrap: wrap; gap: 40px; padding-top: 36px; margin-top: 36px; border-top: 1px solid var(--line); }
   .pillar { flex: 1 1 200px; }
@@ -194,7 +194,7 @@
   }
 
   /* Founder carousel */
-  .fcarousel { position:relative; overflow:hidden; background:var(--green-deep); outline:none; min-height: 78vh; }
+  .fcarousel { position:relative; overflow:hidden; background:var(--green-deep); outline:none; min-height: 420px; }
   .fcarousel:focus-visible { box-shadow: inset 0 0 0 2px var(--yellow); }
   .fcarousel-track { position:absolute; inset:0; }
   .fslide { position:absolute; inset:0; margin:0; opacity:0; z-index:0; transition:opacity 1.15s cubic-bezier(.4,0,.2,1); }
@@ -204,6 +204,12 @@
     filter:saturate(.92) contrast(1.05); transform:scale(1.1);
   }
   .fslide.is-active img { animation:fkenburns 7.5s cubic-bezier(.2,0,.2,1) both; }
+  /* Per-photo framing so the founder stays in view at the shorter carousel height */
+  .fcarousel-track > .fslide:nth-child(1) img { object-position: 55% 95%; }
+  .fcarousel-track > .fslide:nth-child(2) img { object-position: 60% 61%; }
+  .fcarousel-track > .fslide:nth-child(3) img { object-position: 55% 68%; }
+  .fcarousel-track > .fslide:nth-child(4) img { object-position: 78% 61%; }
+  .fcarousel-track > .fslide:nth-child(5) img { object-position: 80% 18%; }
   @keyframes fkenburns { from { transform:scale(1.12); } to { transform:scale(1); } }
   .fcarousel-grain {
     position:absolute; inset:0; z-index:2; pointer-events:none; opacity:.55; mix-blend-mode:overlay;
@@ -213,12 +219,12 @@
     position:absolute; inset:0; z-index:2; pointer-events:none;
     background:linear-gradient(180deg, rgba(12,21,36,0) 40%, rgba(12,21,36,.9) 100%);
   }
-  .fcarousel-caption { position:absolute; left:40px; bottom:24px; z-index:3; display:flex; flex-direction:column; align-items:flex-start; gap:8px; }
+  .fcarousel-caption { position:absolute; left:16px; bottom:16px; z-index:3; display:flex; flex-direction:column; align-items:flex-start; gap:8px; }
   .fcarousel-count {
-    position:absolute; right:40px; top:24px; z-index:3; font-size:11px; letter-spacing:.06em;
+    position:absolute; right:16px; top:16px; z-index:3; font-size:11px; letter-spacing:.06em;
     color:var(--text-dim); background:rgba(12,21,36,.55); padding:4px 8px;
   }
-  .fcarousel-controls { position:absolute; right:40px; bottom:24px; z-index:3; display:flex; align-items:center; gap:10px; }
+  .fcarousel-controls { position:absolute; right:16px; bottom:16px; z-index:3; display:flex; align-items:center; gap:10px; }
   .fcarousel-btn {
     width:30px; height:30px; border:2px solid rgba(236,239,242,.35); background:rgba(12,21,36,.55);
     color:var(--text); font-size:16px; line-height:1; display:flex; align-items:center; justify-content:center;
@@ -313,40 +319,42 @@
 </section>
 
 <section id="studio" class="studio-band">
-  <div class="fcarousel" id="founderCarousel" tabindex="0" aria-roledescription="carousel" aria-label="Rick Magnus Rose, in the field">
-    <div class="fcarousel-track">
-      <figure class="fslide is-active">
-        <img src="images/founder-01.jpg" alt="Rick Magnus Rose seated beneath the colonnade at Balboa Park, San Diego" loading="eager">
-      </figure>
-      <figure class="fslide">
-        <img src="images/founder-02.jpg" alt="Rick Magnus Rose standing before a row of cypress trees at dusk" loading="lazy">
-      </figure>
-      <figure class="fslide">
-        <img src="images/founder-03.jpg" alt="Rick Magnus Rose at a rooftop table at sunset, mountains in the distance" loading="lazy">
-      </figure>
-      <figure class="fslide">
-        <img src="images/founder-04.jpg" alt="Rick Magnus Rose seated among tropical foliage" loading="lazy">
-      </figure>
-      <figure class="fslide">
-        <img src="images/founder-05.jpg" alt="Rick Magnus Rose in a suit on a film set" loading="lazy">
-      </figure>
+  <div class="container">
+    <div class="fcarousel" id="founderCarousel" tabindex="0" aria-roledescription="carousel" aria-label="Rick Magnus Rose, in the field">
+      <div class="fcarousel-track">
+        <figure class="fslide is-active">
+          <img src="images/founder-01.jpg" alt="Rick Magnus Rose seated beneath the colonnade at Balboa Park, San Diego" loading="eager">
+        </figure>
+        <figure class="fslide">
+          <img src="images/founder-02.jpg" alt="Rick Magnus Rose standing before a row of cypress trees at dusk" loading="lazy">
+        </figure>
+        <figure class="fslide">
+          <img src="images/founder-03.jpg" alt="Rick Magnus Rose at a rooftop table at sunset, mountains in the distance" loading="lazy">
+        </figure>
+        <figure class="fslide">
+          <img src="images/founder-04.jpg" alt="Rick Magnus Rose seated among tropical foliage" loading="lazy">
+        </figure>
+        <figure class="fslide">
+          <img src="images/founder-05.jpg" alt="Rick Magnus Rose in a suit on a film set" loading="lazy">
+        </figure>
+      </div>
+      <div class="fcarousel-grain" aria-hidden="true"></div>
+      <div class="fcarousel-scrim" aria-hidden="true"></div>
+
+      <div class="fcarousel-caption">
+        <span class="tag" style="font-family:var(--mono); font-size:11px; background:var(--green-deep); color:var(--yellow); padding:4px 8px">RICK MAGNUS ROSE — FOUNDER</span>
+      </div>
+
+      <span class="fcarousel-count mono" id="founderCount" aria-hidden="true">01 / 05</span>
+
+      <div class="fcarousel-controls">
+        <button type="button" class="fcarousel-btn" id="founderPrev" aria-label="Previous photo">‹</button>
+        <div class="fcarousel-dots" id="founderDots" role="tablist" aria-label="Choose photo"></div>
+        <button type="button" class="fcarousel-btn" id="founderNext" aria-label="Next photo">›</button>
+      </div>
+
+      <span class="sr-only" role="status" aria-live="polite" id="founderLive"></span>
     </div>
-    <div class="fcarousel-grain" aria-hidden="true"></div>
-    <div class="fcarousel-scrim" aria-hidden="true"></div>
-
-    <div class="fcarousel-caption">
-      <span class="tag" style="font-family:var(--mono); font-size:11px; background:var(--green-deep); color:var(--yellow); padding:4px 8px">RICK MAGNUS ROSE — FOUNDER</span>
-    </div>
-
-    <span class="fcarousel-count mono" id="founderCount" aria-hidden="true">01 / 05</span>
-
-    <div class="fcarousel-controls">
-      <button type="button" class="fcarousel-btn" id="founderPrev" aria-label="Previous photo">‹</button>
-      <div class="fcarousel-dots" id="founderDots" role="tablist" aria-label="Choose photo"></div>
-      <button type="button" class="fcarousel-btn" id="founderNext" aria-label="Next photo">›</button>
-    </div>
-
-    <span class="sr-only" role="status" aria-live="polite" id="founderLive"></span>
   </div>
   <div class="container studio-copy">
     <div class="kicker">THE STUDIO</div>
