@@ -173,11 +173,6 @@
     background:linear-gradient(180deg, rgba(12,21,36,0) 40%, rgba(12,21,36,.9) 100%);
   }
   .fcarousel-caption { position:absolute; left:16px; bottom:16px; z-index:3; display:flex; flex-direction:column; align-items:flex-start; gap:8px; }
-  .fcarousel-note {
-    font-size:11px; letter-spacing:.06em; color:var(--text-dim);
-    opacity:0; transform:translateY(6px); transition:opacity .5s ease, transform .5s ease;
-  }
-  .fcarousel-note.is-visible { opacity:1; transform:none; }
   .fcarousel-count {
     position:absolute; right:16px; top:16px; z-index:3; font-size:11px; letter-spacing:.06em;
     color:var(--text-dim); background:rgba(12,21,36,.55); padding:4px 8px;
@@ -287,23 +282,20 @@
   <div id="studio" class="split" style="display:grid; grid-template-columns:5fr 7fr; border-bottom:2px solid var(--line)">
     <div class="vr fcarousel" id="founderCarousel" style="min-height:420px" tabindex="0" aria-roledescription="carousel" aria-label="Rick Magnus Rose, in the field">
       <div class="fcarousel-track">
-        <figure class="fslide is-active" data-caption="Balboa Park, San Diego.">
+        <figure class="fslide is-active">
           <img src="images/founder-01.jpg" alt="Rick Magnus Rose seated beneath the colonnade at Balboa Park, San Diego" loading="eager">
         </figure>
-        <figure class="fslide" data-caption="Cypress, dusk.">
+        <figure class="fslide">
           <img src="images/founder-02.jpg" alt="Rick Magnus Rose standing before a row of cypress trees at dusk" loading="lazy">
         </figure>
-        <figure class="fslide" data-caption="Sundown, home base.">
+        <figure class="fslide">
           <img src="images/founder-03.jpg" alt="Rick Magnus Rose at a rooftop table at sunset, mountains in the distance" loading="lazy">
         </figure>
-        <figure class="fslide" data-caption="Green room.">
+        <figure class="fslide">
           <img src="images/founder-04.jpg" alt="Rick Magnus Rose seated among tropical foliage" loading="lazy">
         </figure>
-        <figure class="fslide" data-caption="On set.">
+        <figure class="fslide">
           <img src="images/founder-05.jpg" alt="Rick Magnus Rose in a suit on a film set" loading="lazy">
-        </figure>
-        <figure class="fslide" data-caption="Up close.">
-          <img src="images/founder-06.jpg" alt="Rick Magnus Rose in a close-up portrait, wearing a floral shirt with a rose pin" loading="lazy">
         </figure>
       </div>
       <div class="fcarousel-grain" aria-hidden="true"></div>
@@ -311,10 +303,9 @@
 
       <div class="fcarousel-caption">
         <span class="tag">RICK MAGNUS ROSE — FOUNDER</span>
-        <span class="fcarousel-note mono is-visible" id="founderCaptionText">Balboa Park, San Diego.</span>
       </div>
 
-      <span class="fcarousel-count mono" id="founderCount" aria-hidden="true">01 / 06</span>
+      <span class="fcarousel-count mono" id="founderCount" aria-hidden="true">01 / 05</span>
 
       <div class="fcarousel-controls">
         <button type="button" class="fcarousel-btn" id="founderPrev" aria-label="Previous photo">‹</button>
@@ -434,12 +425,11 @@
 
   var slides = Array.prototype.slice.call(root.querySelectorAll('.fslide'));
   var dotsWrap = document.getElementById('founderDots');
-  var captionEl = document.getElementById('founderCaptionText');
   var countEl = document.getElementById('founderCount');
   var liveEl = document.getElementById('founderLive');
   var prevBtn = document.getElementById('founderPrev');
   var nextBtn = document.getElementById('founderNext');
-  if (!slides.length || !dotsWrap || !captionEl || !countEl || !liveEl || !prevBtn || !nextBtn) return;
+  if (!slides.length || !dotsWrap || !countEl || !liveEl || !prevBtn || !nextBtn) return;
 
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var total = slides.length;
@@ -470,15 +460,8 @@
       d.setAttribute('aria-selected', j === idx ? 'true' : 'false');
     });
 
-    var nextCaption = slides[idx].getAttribute('data-caption') || '';
-    captionEl.classList.remove('is-visible');
-    window.setTimeout(function () {
-      captionEl.textContent = nextCaption;
-      captionEl.classList.add('is-visible');
-    }, reduceMotion ? 0 : 200);
-
     countEl.textContent = pad(idx + 1) + ' / ' + pad(total);
-    liveEl.textContent = 'Photo ' + (idx + 1) + ' of ' + total + ': ' + nextCaption;
+    liveEl.textContent = 'Photo ' + (idx + 1) + ' of ' + total;
   }
 
   function next() { goTo(idx + 1); }
