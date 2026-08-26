@@ -151,6 +151,52 @@
     .grid4 { grid-template-columns:1fr !important; }
     .brand-mark .cr { font-size:64px; }
   }
+
+  /* Founder carousel */
+  .fcarousel { position:relative; overflow:hidden; background:var(--green-deep); outline:none; }
+  .fcarousel:focus-visible { box-shadow: inset 0 0 0 2px var(--yellow); }
+  .fcarousel-track { position:absolute; inset:0; }
+  .fslide { position:absolute; inset:0; margin:0; opacity:0; z-index:0; transition:opacity 1.15s cubic-bezier(.4,0,.2,1); }
+  .fslide.is-active { opacity:1; z-index:1; }
+  .fslide img {
+    width:100%; height:100%; object-fit:cover; object-position:60% 38%;
+    filter:saturate(.92) contrast(1.05); transform:scale(1.1);
+  }
+  .fslide.is-active img { animation:fkenburns 7.5s cubic-bezier(.2,0,.2,1) both; }
+  @keyframes fkenburns { from { transform:scale(1.12); } to { transform:scale(1); } }
+  .fcarousel-grain {
+    position:absolute; inset:0; z-index:2; pointer-events:none; opacity:.55; mix-blend-mode:overlay;
+    background-image:repeating-linear-gradient(135deg, rgba(255,216,95,0.05) 0 2px, transparent 2px 26px);
+  }
+  .fcarousel-scrim {
+    position:absolute; inset:0; z-index:2; pointer-events:none;
+    background:linear-gradient(180deg, rgba(12,21,36,0) 40%, rgba(12,21,36,.9) 100%);
+  }
+  .fcarousel-caption { position:absolute; left:16px; bottom:16px; z-index:3; display:flex; flex-direction:column; align-items:flex-start; gap:8px; }
+  .fcarousel-note {
+    font-size:11px; letter-spacing:.06em; color:var(--text-dim);
+    opacity:0; transform:translateY(6px); transition:opacity .5s ease, transform .5s ease;
+  }
+  .fcarousel-note.is-visible { opacity:1; transform:none; }
+  .fcarousel-count {
+    position:absolute; right:16px; top:16px; z-index:3; font-size:11px; letter-spacing:.06em;
+    color:var(--text-dim); background:rgba(12,21,36,.55); padding:4px 8px;
+  }
+  .fcarousel-controls { position:absolute; right:16px; bottom:16px; z-index:3; display:flex; align-items:center; gap:10px; }
+  .fcarousel-btn {
+    width:30px; height:30px; border:2px solid rgba(236,239,242,.35); background:rgba(12,21,36,.55);
+    color:var(--text); font-size:16px; line-height:1; display:flex; align-items:center; justify-content:center;
+    cursor:pointer; transition:border-color .2s ease, color .2s ease;
+  }
+  .fcarousel-btn:hover, .fcarousel-btn:focus-visible { border-color:var(--yellow); color:var(--yellow); outline:none; }
+  .fcarousel-dots { display:flex; gap:6px; }
+  .fcarousel-dot { width:7px; height:7px; padding:0; border:none; border-radius:50%; background:rgba(236,239,242,.35); cursor:pointer; }
+  .fcarousel-dot.is-active { background:var(--yellow); }
+  .fcarousel-dot:focus-visible { outline:2px solid var(--yellow); outline-offset:2px; }
+  .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+  @media (prefers-reduced-motion: reduce) {
+    .fslide { transition-duration:.3s; }
+  }
 </style>
 </head>
 <body>
@@ -239,9 +285,41 @@
   </div>
 
   <div id="studio" class="split" style="display:grid; grid-template-columns:5fr 7fr; border-bottom:2px solid var(--line)">
-    <div class="vr" style="min-height:420px; position:relative; overflow:hidden">
-      <img src="founder.jpg" alt="Rick Magnus Rose, founder of Crescendo Rose Entertainment" style="width:100%; height:100%; object-fit:cover; object-position:60% 55%">
-      <span class="tag" style="position:absolute; left:16px; bottom:16px">RICK MAGNUS ROSE — FOUNDER</span>
+    <div class="vr fcarousel" id="founderCarousel" style="min-height:420px" tabindex="0" aria-roledescription="carousel" aria-label="Rick Magnus Rose, in the field">
+      <div class="fcarousel-track">
+        <figure class="fslide is-active" data-caption="Balboa Park, San Diego.">
+          <img src="images/founder-01.jpg" alt="Rick Magnus Rose seated beneath the colonnade at Balboa Park, San Diego" loading="eager">
+        </figure>
+        <figure class="fslide" data-caption="Cypress, dusk.">
+          <img src="images/founder-02.jpg" alt="Rick Magnus Rose standing before a row of cypress trees at dusk" loading="lazy">
+        </figure>
+        <figure class="fslide" data-caption="Sundown, home base.">
+          <img src="images/founder-03.jpg" alt="Rick Magnus Rose at a rooftop table at sunset, mountains in the distance" loading="lazy">
+        </figure>
+        <figure class="fslide" data-caption="Green room.">
+          <img src="images/founder-04.jpg" alt="Rick Magnus Rose seated among tropical foliage" loading="lazy">
+        </figure>
+        <figure class="fslide" data-caption="On set.">
+          <img src="images/founder-05.jpg" alt="Rick Magnus Rose in a suit on a film set" loading="lazy">
+        </figure>
+      </div>
+      <div class="fcarousel-grain" aria-hidden="true"></div>
+      <div class="fcarousel-scrim" aria-hidden="true"></div>
+
+      <div class="fcarousel-caption">
+        <span class="tag">RICK MAGNUS ROSE — FOUNDER</span>
+        <span class="fcarousel-note mono is-visible" id="founderCaptionText">Balboa Park, San Diego.</span>
+      </div>
+
+      <span class="fcarousel-count mono" id="founderCount" aria-hidden="true">01 / 05</span>
+
+      <div class="fcarousel-controls">
+        <button type="button" class="fcarousel-btn" id="founderPrev" aria-label="Previous photo">‹</button>
+        <div class="fcarousel-dots" id="founderDots" role="tablist" aria-label="Choose photo"></div>
+        <button type="button" class="fcarousel-btn" id="founderNext" aria-label="Next photo">›</button>
+      </div>
+
+      <span class="sr-only" role="status" aria-live="polite" id="founderLive"></span>
     </div>
     <div style="padding:56px 40px; display:flex; flex-direction:column; gap:20px">
       <h6 style="margin:0; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--green)">The studio</h6>
@@ -345,6 +423,95 @@
   </div>
 
 </div>
+
+<script>
+(function () {
+  var root = document.getElementById('founderCarousel');
+  if (!root) return;
+
+  var slides = Array.prototype.slice.call(root.querySelectorAll('.fslide'));
+  var dotsWrap = document.getElementById('founderDots');
+  var captionEl = document.getElementById('founderCaptionText');
+  var countEl = document.getElementById('founderCount');
+  var liveEl = document.getElementById('founderLive');
+  var prevBtn = document.getElementById('founderPrev');
+  var nextBtn = document.getElementById('founderNext');
+  if (!slides.length || !dotsWrap || !captionEl || !countEl || !liveEl || !prevBtn || !nextBtn) return;
+
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var total = slides.length;
+  var idx = 0;
+  var timer = null;
+  var paused = false;
+  var delay = 6000;
+
+  slides.forEach(function (slide, i) {
+    var dot = document.createElement('button');
+    dot.type = 'button';
+    dot.className = 'fcarousel-dot' + (i === 0 ? ' is-active' : '');
+    dot.setAttribute('role', 'tab');
+    dot.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+    dot.setAttribute('aria-label', 'Photo ' + (i + 1) + ' of ' + total);
+    dot.addEventListener('click', function () { goTo(i); restart(); });
+    dotsWrap.appendChild(dot);
+  });
+  var dots = Array.prototype.slice.call(dotsWrap.children);
+
+  function pad(n) { return n < 10 ? '0' + n : String(n); }
+
+  function goTo(i) {
+    idx = (i + total) % total;
+    slides.forEach(function (s, j) { s.classList.toggle('is-active', j === idx); });
+    dots.forEach(function (d, j) {
+      d.classList.toggle('is-active', j === idx);
+      d.setAttribute('aria-selected', j === idx ? 'true' : 'false');
+    });
+
+    var nextCaption = slides[idx].getAttribute('data-caption') || '';
+    captionEl.classList.remove('is-visible');
+    window.setTimeout(function () {
+      captionEl.textContent = nextCaption;
+      captionEl.classList.add('is-visible');
+    }, reduceMotion ? 0 : 200);
+
+    countEl.textContent = pad(idx + 1) + ' / ' + pad(total);
+    liveEl.textContent = 'Photo ' + (idx + 1) + ' of ' + total + ': ' + nextCaption;
+  }
+
+  function next() { goTo(idx + 1); }
+  function prev() { goTo(idx - 1); }
+
+  function start() {
+    if (reduceMotion) return;
+    stop();
+    timer = window.setInterval(function () { if (!paused) next(); }, delay);
+  }
+  function stop() {
+    if (timer) { window.clearInterval(timer); timer = null; }
+  }
+  function restart() { start(); }
+
+  nextBtn.addEventListener('click', function () { next(); restart(); });
+  prevBtn.addEventListener('click', function () { prev(); restart(); });
+
+  root.addEventListener('mouseenter', function () { paused = true; });
+  root.addEventListener('mouseleave', function () { paused = false; });
+  root.addEventListener('focusin', function () { paused = true; });
+  root.addEventListener('focusout', function () { paused = false; });
+
+  root.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight') { next(); restart(); }
+    else if (e.key === 'ArrowLeft') { prev(); restart(); }
+  });
+
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) stop(); else start();
+  });
+
+  goTo(0);
+  start();
+})();
+</script>
 
 </body>
 </html>
