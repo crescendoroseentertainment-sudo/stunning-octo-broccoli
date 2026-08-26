@@ -401,14 +401,14 @@
         <div>San Diego, California</div>
       </div>
     </div>
-    <div style="padding:56px 40px; display:grid; grid-template-columns:1fr 1fr; gap:20px">
-      <div style="display:flex; flex-direction:column; gap:6px"><label class="f">NAME</label><input class="input" placeholder="Vivian Marsh"></div>
-      <div style="display:flex; flex-direction:column; gap:6px"><label class="f">EMAIL</label><input class="input" type="email" placeholder="you@domain.com"></div>
-      <div style="display:flex; flex-direction:column; gap:6px"><label class="f">DISCIPLINE</label><input class="input" placeholder="Vocalist / host"></div>
-      <div style="display:flex; flex-direction:column; gap:6px"><label class="f">LINK TO WORK</label><input class="input" placeholder="https://"></div>
-      <div style="grid-column:1/-1; display:flex; flex-direction:column; gap:6px"><label class="f">WHAT ARE YOU BUILDING?</label><textarea class="input" rows="4" placeholder="Two lines is plenty."></textarea></div>
-      <a href="mailto:mailbox@crescendorose.com?subject=Submission%20for%20review" class="btn btn-primary" style="grid-column:1/-1; justify-content:flex-start; padding:16px 22px; font-size:15px">Submit for review</a>
-    </div>
+    <form id="submitForm" style="padding:56px 40px; display:grid; grid-template-columns:1fr 1fr; gap:20px">
+      <div style="display:flex; flex-direction:column; gap:6px"><label class="f" for="fName">NAME</label><input class="input" id="fName" placeholder="Vivian Marsh" required></div>
+      <div style="display:flex; flex-direction:column; gap:6px"><label class="f" for="fEmail">EMAIL</label><input class="input" id="fEmail" type="email" placeholder="you@domain.com" required></div>
+      <div style="display:flex; flex-direction:column; gap:6px"><label class="f" for="fDiscipline">DISCIPLINE</label><input class="input" id="fDiscipline" placeholder="Vocalist / host"></div>
+      <div style="display:flex; flex-direction:column; gap:6px"><label class="f" for="fLink">LINK TO WORK</label><input class="input" id="fLink" placeholder="https://"></div>
+      <div style="grid-column:1/-1; display:flex; flex-direction:column; gap:6px"><label class="f" for="fMessage">WHAT ARE YOU BUILDING?</label><textarea class="input" id="fMessage" rows="4" placeholder="Two lines is plenty."></textarea></div>
+      <button type="submit" class="btn btn-primary" style="grid-column:1/-1; justify-content:flex-start; padding:16px 22px; font-size:15px; appearance:none; -webkit-appearance:none; border-radius:0">Submit for review</button>
+    </form>
   </div>
 
   <div style="border-top:2px solid var(--line); padding:20px 40px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px" class="mono">
@@ -495,6 +495,35 @@
   });
 
   goTo(0);
+})();
+</script>
+
+<script>
+(function () {
+  var form = document.getElementById('submitForm');
+  if (!form) return;
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    var name = document.getElementById('fName').value.trim();
+    var email = document.getElementById('fEmail').value.trim();
+    var discipline = document.getElementById('fDiscipline').value.trim();
+    var link = document.getElementById('fLink').value.trim();
+    var message = document.getElementById('fMessage').value.trim();
+
+    var lines = ['Name: ' + name, 'Email: ' + email];
+    if (discipline) lines.push('Discipline: ' + discipline);
+    if (link) lines.push('Link to work: ' + link);
+    lines.push('', 'What are they building?', message || '(not provided)');
+
+    var subject = 'Submission for review — ' + name;
+    var mailto = 'mailto:mailbox@crescendorose.com'
+      + '?subject=' + encodeURIComponent(subject)
+      + '&body=' + encodeURIComponent(lines.join('\r\n'));
+
+    window.location.href = mailto;
+  });
 })();
 </script>
 
