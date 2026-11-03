@@ -12,3 +12,7 @@ The project is connected to this GitHub repository:
 
 Site settings live in `vercel.json`. There is no build step: `index.html` and
 `images/` are served as static files.
+
+If a push does not show up as a deployment, check that the Vercel GitHub app
+is installed on `crescendoroseentertainment-sudo` with access to this repo, and
+that the project's Settings → Git page lists this repository.
