@@ -1,0 +1,51 @@
+name: One-time cleanup of old Vercel projects
+
+# Manually triggered. Deletes old, unused projects in the crescendo rose team.
+# Live projects (crescendorosesite-2, rose-home, rick-magnus-rose, rose-alerts,
+# rose-beatbox, rose-probe) are NOT in this list. Remove this file after use.
+
+on:
+  workflow_dispatch:
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    env:
+      TEAM_ID: team_dgNIQRoFGNcRHoWUVFbBKfn9
+      KEEP: prj_wSH42KKgbrqRh58gBKYLFUkLHDiC
+    steps:
+      - name: Delete projects
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: |
+          set -u
+          fail=0
+          while read -r id name; do
+            [ -z "$id" ] && continue
+            if [ "$id" = "$KEEP" ]; then echo "refusing to delete live project"; exit 1; fi
+            code=$(curl -sS -o resp.json -w '%{http_code}' -X DELETE \
+              -H "Authorization: Bearer $VERCEL_TOKEN" \
+              "https://api.vercel.com/v9/projects/$id?teamId=$TEAM_ID")
+            echo "$name ($id): HTTP $code" | tee -a "$GITHUB_STEP_SUMMARY"
+            case "$code" in 204|200|404) ;; *) cat resp.json; fail=1 ;; esac
+          done <<'LIST'
+          prj_LD2bNiHSyWEbFwERkNbgDdnwy8Z2 stunning-octo-broccoli
+          prj_FxQwCVkNbQsWs71HRhGVyFotPZ0t crescendorosesite-1
+          prj_G65EC0SB3U5K5B6q2ZOMOhToZ5UU crescendorosesite
+          prj_u7ZJqcuQxCLXCoqAnlZZ1hrGEhGr crescendo-rose-site-1
+          prj_OMyIMsTPUkbvWZUnVJAbWcQN8CCy crescendo-rose-site-current-new
+          prj_hcN9QuW2rmSeVlIs2TQ4qkVhsPux crescendo-rose-site-current
+          prj_8Vbt0Bm4I8Y62iyUJfyWX2msKUzO crescendo-rose-site
+          prj_840DeUZIFLqr6VLHMIkevQZWtshy crescendo-rose-final-v1
+          prj_FFdbfOJ7lcc4TP4pHfRWWASvraY6 crescendo-rose-color-v1
+          prj_Gl6hwoqiZF78Lk8lh6M72ulhUG90 crescendo-rose-color-v2
+          prj_hidfcaV7mxKVAx25juYQCu7csgvg crescendo-rose-ledger-navy
+          prj_hvTeXCbBkz4OzD0ScIINyVihqcgl crescendo-rose-live-2
+          prj_a93MzgJjdpeN1MnAoPSO1S8v0C4r crescendorose.com
+          prj_EcCb09KMVX00yowVeD1KjcnyIIL4 crescendo-rose-entertainment-deploy-1
+          prj_XCJdw4GzA6StDkox0aM7aNq5dvie crescendo-rose-entertainment-deploy
+          prj_b93DZQeF2tfqHOVIOZSJ4253iocl crescendo-rose-actual-experience-v1-1
+          prj_bN6xz1M6CWsAEyzlMRqrT8oFQCpZ crescendo-rose-actual-experience-v1
+          prj_Owjf8NyDZjSMXQSqye2L8bASPNBX crescendo-rose-vercel-upload
+          LIST
+          exit $fail
