@@ -4,7 +4,8 @@ The site is hosted on Vercel in the **crescendo rose** team, project
 **crescendorosesite-2**, serving www.crescendorose.com and
 www.crescendoroseentertainment.com.
 
-The project is connected to this GitHub repository:
+The project is connected to this GitHub repository
+(`crescendoroseentertainment-sudo/stunning-octo-broccoli`):
 
 - Pushing to the production branch (`claude/setup-mcp-servers-forsja`, the
   repo's default branch) deploys straight to the live site.
