@@ -9,7 +9,8 @@ The project is connected to this GitHub repository
 
 - Pushing to the production branch (`claude/setup-mcp-servers-forsja`, the
   repo's default branch) deploys straight to the live site.
-- Pushing to any other branch creates a preview deployment with its own URL.
+- Pushing to any other branch creates a preview deployment with its own URL
+  (protected by Vercel login; custom domains stay public).
 
 Site settings live in `vercel.json`. There is no build step: `index.html` and
 `images/` are served as static files.
